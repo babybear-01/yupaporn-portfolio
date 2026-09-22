@@ -1,128 +1,102 @@
-const preloader = document.getElementById("preloader");
-const navbar = document.getElementById("navbar");
-const navLinks = document.getElementById("navLinks");
-const menuBtn = document.getElementById("menuBtn");
-const typewriter = document.getElementById("typewriter");
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
 
 window.addEventListener("load", () => {
-  setTimeout(() => preloader.classList.add("hidden"), 500);
+  setTimeout(() => $("#preloader")?.classList.add("hide"), 500);
 });
 
-window.addEventListener("scroll", () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 40);
-}, { passive: true });
-
-menuBtn.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => navLinks.classList.remove("open"));
-});
-
-// Typewriter
 const phrases = [
-  "Machine Learning Enthusiast",
-  "NLP & Computer Vision Builder",
-  "AI Application Developer",
-  "Time-Series Forecasting Learner"
+  "AI/ML Engineer Intern",
+  "Machine Learning",
+  "NLP & Computer Vision",
+  "AI Application Builder"
 ];
+
 let phraseIndex = 0, charIndex = 0, deleting = false;
+const typewriter = $("#typewriter");
 
-function typeEffect() {
+function typeLoop(){
+  if(!typewriter) return;
   const phrase = phrases[phraseIndex];
-  typewriter.textContent = deleting
-    ? phrase.slice(0, charIndex--)
-    : phrase.slice(0, charIndex++);
+  typewriter.textContent = deleting ? phrase.slice(0, charIndex--) : phrase.slice(0, charIndex++);
+  let speed = deleting ? 45 : 75;
 
-  let delay = deleting ? 45 : 85;
-
-  if (!deleting && charIndex > phrase.length) {
-    deleting = true;
-    delay = 1700;
-  } else if (deleting && charIndex < 0) {
-    deleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    charIndex = 0;
-    delay = 500;
+  if(!deleting && charIndex > phrase.length){
+    deleting = true; speed = 1500;
+  } else if(deleting && charIndex < 0){
+    deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; charIndex = 0; speed = 350;
   }
-  setTimeout(typeEffect, delay);
+  setTimeout(typeLoop, speed);
 }
-typeEffect();
+typeLoop();
 
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("visible");
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-// Active nav
-const sections = document.querySelectorAll("section[id]");
-const links = document.querySelectorAll(".nav-links a");
+const navbar = $("#navbar");
 window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const top = section.offsetTop - 140;
-    if (window.scrollY >= top) current = section.id;
-  });
-  links.forEach(link => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
-  });
-}, { passive: true });
+  navbar?.classList.toggle("scrolled", window.scrollY > 30);
+});
 
-// Particle background
-const canvas = document.getElementById("dotCanvas");
-const ctx = canvas.getContext("2d");
-let dots = [];
+const menuToggle = $("#menuToggle");
+const navMenu = $("#navMenu");
+menuToggle?.addEventListener("click", () => navMenu?.classList.toggle("open"));
+$$(".nav-link, .nav-connect").forEach(link => {
+  link.addEventListener("click", () => navMenu?.classList.remove("open"));
+});
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth * devicePixelRatio;
-  canvas.height = window.innerHeight * devicePixelRatio;
-  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-
-  const count = Math.min(85, Math.floor(window.innerWidth / 16));
-  dots = Array.from({ length: count }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    r: Math.random() * 1.3 + .4,
-    vx: (Math.random() - .5) * .18,
-    vy: (Math.random() - .5) * .18
-  }));
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-function drawDots() {
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-  dots.forEach((d, i) => {
-    d.x += d.vx; d.y += d.vy;
-    if (d.x < 0 || d.x > window.innerWidth) d.vx *= -1;
-    if (d.y < 0 || d.y > window.innerHeight) d.vy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(155,168,171,.35)";
-    ctx.fill();
-
-    for (let j = i + 1; j < dots.length; j++) {
-      const e = dots[j];
-      const dx = d.x - e.x, dy = d.y - e.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 105) {
-        ctx.beginPath();
-        ctx.moveTo(d.x, d.y);
-        ctx.lineTo(e.x, e.y);
-        ctx.strokeStyle = `rgba(74,92,106,${0.12 * (1 - dist / 105)})`;
-        ctx.lineWidth = .6;
-        ctx.stroke();
-      }
+const sections = $$("main section[id]");
+const navLinks = $$(".nav-link");
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
     }
   });
-  requestAnimationFrame(drawDots);
+}, {rootMargin:"-40% 0px -50% 0px"});
+sections.forEach(section => sectionObserver.observe(section));
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:.12});
+$$(".reveal").forEach(el => revealObserver.observe(el));
+
+$("#year").textContent = new Date().getFullYear();
+
+/* Lightweight animated background — no external JS library required. */
+const canvas = $("#particles");
+const ctx = canvas?.getContext("2d");
+let particles = [];
+
+function resizeCanvas(){
+  if(!canvas) return;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  particles = Array.from({length: Math.min(70, Math.floor(window.innerWidth/18))}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*1.5 + .3,
+    vx: (Math.random()-.5)*.22,
+    vy: (Math.random()-.5)*.22
+  }));
 }
-drawDots();
+function drawParticles(){
+  if(!ctx) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "rgba(150,145,255,.55)";
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0||p.x>canvas.width)p.vx*=-1;
+    if(p.y<0||p.y>canvas.height)p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+  });
+  requestAnimationFrame(drawParticles);
+}
+resizeCanvas();
+drawParticles();
+window.addEventListener("resize", resizeCanvas);
+
+/* Prevent placeholder project links from jumping to the top. */
+$$(".disabled-link").forEach(a => a.addEventListener("click", e => e.preventDefault()));

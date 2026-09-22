@@ -1,27 +1,25 @@
-# Yupaporn AI/ML Portfolio
+# Yupaporn AI/ML Portfolio — Aarya Pattern
 
-A single-page portfolio inspired by the interaction pattern of the public
-`xlrrr8/Aarya-s-portfolio` repository: fixed navigation, preloader, hero/typewriter,
-scroll reveal, project cards, animated background, responsive mobile menu, and contact section.
+This version follows the structural pattern of the referenced portfolio:
+Preloader → Navbar → Hero → About → Interests → Skills → Featured Projects → Activities → Contact.
 
 ## Files
-- `index.html` — page content
+- `index.html` — all portfolio content
 - `styles.css` — visual design and responsive layout
-- `script.js` — typewriter, scroll reveal, navigation, particles
+- `script.js` — preloader, typewriter, navigation, reveal animations and particles
 - `README.md` — setup notes
 
-## Run locally
-Open `index.html` in a browser, or use VS Code Live Server.
+## Before publishing
+1. Put your own CV PDF in this folder and name it exactly:
+   `resume.pdf`
+2. Replace the four `Add GitHub URL` placeholder links in `index.html` with your real project URLs.
+3. If you want a profile photo later, replace the `YS` avatar blocks with an image.
+4. Upload all files to the root of your GitHub repository.
+5. Enable GitHub Pages from Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
-## Put it on GitHub Pages
-1. Create a new public GitHub repository.
-2. Upload `index.html`, `styles.css`, and `script.js`.
-3. Repository → Settings → Pages.
-4. Select the `main` branch and `/root`.
-5. Save and wait for GitHub Pages to publish.
+## Important content note
+Project metrics and descriptions are based on the latest portfolio/CV information supplied by Yupaporn. The portfolio uses the latest portfolio result for SMS Spam (98.21% accuracy, 0.93 spam F1) rather than the older CV figure.
 
-## Before submitting applications
-- Replace/add GitHub project URLs for each project.
-- Add actual project screenshots if desired.
-- If you want a Resume button, add your PDF as `resume.pdf` and add a button in `index.html`.
-- Check every email/phone/link on desktop and mobile.
+## Contact
+Email: yupapornsaksrirungroj@gmail.com
+LinkedIn: https://www.linkedin.com/in/yupaporn-saksrirungroj/

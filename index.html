@@ -1,358 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Yupaporn Saksrirungroj — AI/ML Engineer Intern Portfolio" />
-  <title>Yupaporn Saksrirungroj | AI/ML Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yupaporn Saksrirungroj — AI/ML Engineer Intern Portfolio">
+  <meta name="keywords" content="Yupaporn Saksrirungroj, AI, Machine Learning, NLP, Computer Vision, Portfolio">
+  <title>Yupaporn Saksrirungroj | AI/ML Engineer Intern</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
-  <div class="preloader" id="preloader">
-    <div class="loader-mark">
-      <span class="loader-dot"></span>
-      <span>YUPAPORN</span>
+  <div id="preloader">
+    <div class="loader-inner">
+      <div class="loader-orbit"><i class="fa-solid fa-brain"></i></div>
+      <div class="loader-word">AI / ML</div>
+      <div class="loader-traits"><span>BUILD</span><span>LEARN</span><span>ITERATE</span></div>
     </div>
-    <div class="loader-line"><span></span></div>
-    <p>AI / ML ENGINEERING</p>
   </div>
 
-  <canvas id="dotCanvas" aria-hidden="true"></canvas>
-  <div class="bg-glow glow-one"></div>
-  <div class="bg-glow glow-two"></div>
+  <div class="bg-sphere sphere-one"></div>
+  <div class="bg-sphere sphere-two"></div>
+  <canvas id="particles"></canvas>
 
   <header class="navbar" id="navbar">
-    <a class="brand" href="#hero" aria-label="Yupaporn home">
-      <span class="brand-mark">Y</span>
-      <span>YUPAPORN</span>
+    <a href="#home" class="logo">
+      <span class="logo-mark">Y</span>
+      <span>Yupaporn<span class="logo-dot">.</span></span>
     </a>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <a class="nav-cta" href="#contact">Let's Connect <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+      <i class="fa-solid fa-bars"></i>
     </button>
+
+    <nav id="navMenu">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#interests" class="nav-link">Interests</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#activities" class="nav-link">Activities</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#contact" class="nav-connect">Let's Connect <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </nav>
   </header>
 
   <main>
-    <section class="hero section" id="hero">
-      <div class="hero-content reveal">
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div class="hero-copy reveal">
         <div class="availability">
-          <span class="availability-dot"></span>
-          Available for Co-op from 30 Nov 2026 · Minimum 16 weeks
+          <span class="pulse"></span>
+          Available for Co-op opportunities
         </div>
 
-        <p class="eyebrow">AI / MACHINE LEARNING ENGINEER INTERN</p>
-
-        <h1>
-          Hi, I'm<br>
-          <span class="hero-name">Yupaporn Saksrirungroj.</span>
-        </h1>
+        <p class="eyebrow">Hi, I'm</p>
+        <h1>Yupaporn <span>Saksrirungroj</span></h1>
 
         <div class="type-line">
           <span id="typewriter"></span><span class="cursor">|</span>
         </div>
 
         <p class="hero-description">
-          Fourth-year Artificial Intelligence Technology student at KMITL with hands-on
-          experience in machine learning, NLP, computer vision, and time-series forecasting.
+          Artificial Intelligence Technology student focused on building practical
+          machine learning solutions across NLP, computer vision, time-series forecasting,
+          and user-facing AI applications.
         </p>
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View My Work <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+        <div class="hero-current">
+          <span class="current-label">Currently Looking For</span>
+          <strong>AI/ML Engineer Internship · Co-op</strong>
+          <small>From 30 Nov 2026 · Minimum 16 weeks</small>
         </div>
 
-        <div class="quick-links">
-          <a href="mailto:yupapornsaksrirungroj@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
-          <a href="https://www.linkedin.com/in/yupaporn-saksrirungroj" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          <span><i class="fa-solid fa-location-dot"></i> Bangkok, Thailand</span>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch <i class="fa-regular fa-paper-plane"></i></a>
+          <a href="resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Resume <i class="fa-regular fa-file-pdf"></i></a>
         </div>
+
+        <div class="scroll-hint"><span></span> Scroll to explore</div>
       </div>
 
-      <div class="hero-visual reveal reveal-delay">
-        <div class="orb orb-main"></div>
-        <div class="orb orb-small"></div>
-        <div class="code-card">
-          <div class="code-top"><span></span><span></span><span></span></div>
-          <pre><code><span class="code-purple">model</span> = <span class="code-blue">LSTM</span>()
-
-<span class="code-purple">model</span>.fit(
-    X_train,
-    y_train,
-    epochs=<span class="code-green">...</span>
-)
-
-<span class="code-purple">result</span> = <span class="code-blue">evaluate</span>(model)
-
-<span class="code-comment"># build → evaluate → deploy</span></code></pre>
-        </div>
-        <div class="floating-chip chip-one"><i class="fa-brands fa-python"></i> Python</div>
-        <div class="floating-chip chip-two"><i class="fa-solid fa-brain"></i> ML / DL</div>
-        <div class="floating-chip chip-three"><i class="fa-solid fa-chart-line"></i> Time Series</div>
-      </div>
-
-      <div class="scroll-indicator">
-        <span class="mouse"><span></span></span>
-        <span>Scroll to explore</span>
-      </div>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="container two-col">
-        <div class="section-heading reveal">
-          <span class="section-number">01</span>
-          <p class="section-tag">ABOUT ME</p>
-          <h2>Turning data into<br><span>practical AI.</span></h2>
-        </div>
-
-        <div class="about-copy reveal">
-          <p class="lead">
-            I'm an Artificial Intelligence Technology student at King Mongkut's Institute
-            of Technology Ladkrabang (KMITL), interested in building practical AI/ML solutions
-            from data preparation through model evaluation and user-facing prototypes.
-          </p>
-          <p>
-            My project experience covers NLP, computer vision, predictive modeling,
-            and time-series forecasting. I enjoy understanding the full workflow —
-            preparing data, training models, evaluating results, and turning outputs
-            into usable applications.
-          </p>
-
-          <div class="stats">
-            <div><strong>4</strong><span>Selected Projects</span></div>
-            <div><strong>3</strong><span>AI/ML Areas</span></div>
-            <div><strong>2027</strong><span>Expected Graduation</span></div>
+      <div class="hero-visual reveal delay-2">
+        <div class="profile-orbit">
+          <div class="orbit-ring ring-one"></div>
+          <div class="orbit-ring ring-two"></div>
+          <div class="profile-card">
+            <div class="avatar">YS</div>
+            <div class="profile-card-text">
+              <span>AI / ML</span>
+              <strong>Engineer Intern</strong>
+            </div>
+            <div class="mini-chip chip-python"><i class="fa-brands fa-python"></i></div>
+            <div class="mini-chip chip-ai"><i class="fa-solid fa-microchip"></i></div>
+            <div class="mini-chip chip-data"><i class="fa-solid fa-chart-line"></i></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section skills" id="skills">
+    <!-- ABOUT -->
+    <section class="section section-dark" id="about">
       <div class="container">
-        <div class="section-heading centered reveal">
-          <span class="section-number">02</span>
-          <p class="section-tag">TECHNICAL SKILLS</p>
-          <h2>Tools I use to<br><span>build & experiment.</span></h2>
+        <div class="section-heading reveal">
+          <span class="section-kicker">01 · ABOUT ME</span>
+          <h2>Turning data into <span>practical AI</span>.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="about-card">
+              <div class="about-avatar">YS</div>
+              <div class="about-badge"><i class="fa-solid fa-graduation-cap"></i> KMITL</div>
+            </div>
+          </div>
+
+          <div class="about-copy reveal delay-1">
+            <p class="lead">
+              I'm a fourth-year Artificial Intelligence Technology student at
+              King Mongkut's Institute of Technology Ladkrabang (KMITL).
+            </p>
+            <p>
+              I enjoy building and evaluating machine learning solutions from data
+              preparation and model development through to practical, user-facing
+              prototypes. My project experience spans NLP, computer vision,
+              student-risk analysis, and time-series forecasting.
+            </p>
+            <p>
+              I'm currently looking for an AI/ML Engineer internship or co-op where
+              I can contribute to real-world AI applications while strengthening my
+              applied machine learning and engineering skills.
+            </p>
+
+            <div class="stats">
+              <div class="stat"><strong>4</strong><span>AI/ML Projects</span></div>
+              <div class="stat"><strong>3+</strong><span>AI Domains</span></div>
+              <div class="stat"><strong>16</strong><span>Weeks Co-op</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section class="section" id="interests">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="section-kicker">02 · INTERESTS</span>
+          <h2>What I like to <span>build with</span>.</h2>
+          <p>Areas I want to keep exploring through projects and real-world work.</p>
+        </div>
+
+        <div class="interest-grid">
+          <article class="interest-card reveal"><div class="interest-icon"><i class="fa-solid fa-brain"></i></div><h3>Machine Learning</h3><p>Model development, evaluation and practical prediction systems.</p></article>
+          <article class="interest-card reveal delay-1"><div class="interest-icon"><i class="fa-solid fa-language"></i></div><h3>NLP</h3><p>Text preprocessing, classification and language-focused applications.</p></article>
+          <article class="interest-card reveal delay-2"><div class="interest-icon"><i class="fa-solid fa-eye"></i></div><h3>Computer Vision</h3><p>Image classification, face processing and visual AI workflows.</p></article>
+          <article class="interest-card reveal"><div class="interest-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>AI in Healthcare</h3><p>Exploring how AI can support useful healthcare applications.</p></article>
+          <article class="interest-card reveal delay-1"><div class="interest-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>LLM Applications</h3><p>Interested in RAG, vector retrieval, agents and tool calling.</p></article>
+          <article class="interest-card reveal delay-2"><div class="interest-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Time-Series Forecasting</h3><p>Learning temporal patterns and forecasting with sequential models.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section-dark" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">03 · SKILLS & TECHNOLOGIES</span>
+          <h2>Tools I use to <span>build</span>.</h2>
         </div>
 
         <div class="skills-grid">
           <article class="skill-card reveal">
-            <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Programming</h3>
-            <div class="tags">
-              <span>Python</span><span>SQL</span>
-            </div>
+            <div class="skill-title"><i class="fa-solid fa-code"></i><h3>Programming</h3></div>
+            <div class="tags"><span>Python</span><span>SQL</span></div>
+          </article>
+
+          <article class="skill-card reveal delay-1">
+            <div class="skill-title"><i class="fa-solid fa-chart-simple"></i><h3>Machine Learning</h3></div>
+            <div class="tags"><span>Scikit-learn</span><span>Random Forest</span><span>Logistic Regression</span><span>Predictive Modeling</span></div>
+          </article>
+
+          <article class="skill-card reveal delay-2">
+            <div class="skill-title"><i class="fa-solid fa-network-wired"></i><h3>Deep Learning</h3></div>
+            <div class="tags"><span>LSTM</span><span>Vision Transformer</span><span>Transfer Learning</span></div>
           </article>
 
           <article class="skill-card reveal">
-            <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
-            <h3>Machine Learning & AI</h3>
-            <div class="tags">
-              <span>Machine Learning</span><span>Deep Learning</span>
-              <span>NLP</span><span>Computer Vision</span>
-              <span>Time-Series Forecasting</span>
-            </div>
+            <div class="skill-title"><i class="fa-solid fa-camera"></i><h3>Computer Vision</h3></div>
+            <div class="tags"><span>MediaPipe</span><span>Image Classification</span><span>Object Detection</span></div>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
-            <h3>Models & Tools</h3>
-            <div class="tags">
-              <span>LSTM</span><span>Vision Transformer</span>
-              <span>MediaPipe</span><span>Streamlit</span>
-              <span>Gradio</span><span>MLflow</span><span>Docker</span>
-            </div>
+          <article class="skill-card reveal delay-1">
+            <div class="skill-title"><i class="fa-solid fa-comments"></i><h3>NLP & AI Apps</h3></div>
+            <div class="tags"><span>NLP</span><span>Text Preprocessing</span><span>Gradio</span><span>Streamlit</span></div>
           </article>
 
-          <article class="skill-card reveal">
-            <div class="skill-icon"><i class="fa-solid fa-flask"></i></div>
-            <h3>Coursework / Exposure</h3>
-            <div class="tags">
-              <span>RAG</span><span>Vector Retrieval</span>
-              <span>AI Agents</span><span>Tool Calling</span>
-              <span>DVC</span><span>CI/CD</span>
-            </div>
+          <article class="skill-card reveal delay-2">
+            <div class="skill-title"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Tools & Exposure</h3></div>
+            <div class="tags"><span>Git</span><span>GitHub</span><span>MLflow</span><span>Docker</span><span>DVC</span><span>CI/CD</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section projects" id="projects">
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
       <div class="container">
-        <div class="section-heading split reveal">
-          <div>
-            <span class="section-number">03</span>
-            <p class="section-tag">SELECTED PROJECTS</p>
-            <h2>Things I've<br><span>built & studied.</span></h2>
-          </div>
-          <p class="section-intro">
-            Four projects showing my experience across ML applications,
-            time-series forecasting, NLP, and computer vision.
-          </p>
+        <div class="section-heading reveal">
+          <span class="section-kicker">04 · FEATURED PROJECTS</span>
+          <h2>Things I've <span>built</span>.</h2>
+          <p>Selected academic projects showing my work across ML, NLP, computer vision and forecasting.</p>
         </div>
 
         <div class="projects-grid">
           <article class="project-card featured reveal">
-            <div class="project-index">01</div>
-            <div class="project-visual visual-student">
-              <i class="fa-solid fa-user-graduate"></i>
-              <span>ML APPLICATION</span>
+            <div class="project-number">01</div>
+            <div class="project-icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="project-meta">2-Person Group · 2025 · MLOps</div>
+            <h3>StudentCare AI</h3>
+            <p>
+              Student risk analysis system using machine learning and a local Streamlit
+              dashboard. My work covered data handling/preparation, analysis and visualization,
+              dashboard integration, documentation and collaboration on the ML workflow.
+            </p>
+            <div class="metric-row">
+              <div><strong>0.79</strong><span>Macro F1</span></div>
+              <div><strong>~82%</strong><span>Risk Accuracy</span></div>
+              <div><strong>~87%</strong><span>Best R²</span></div>
             </div>
-            <div class="project-body">
-              <div class="project-meta">2025 · 2-PERSON GROUP</div>
-              <h3>StudentCare AI</h3>
-              <p class="project-subtitle">Student Risk Analysis System</p>
-              <p>
-                Developed the ML workflow and Streamlit dashboard for a student-risk
-                analysis application, covering data preprocessing, feature engineering,
-                model training, evaluation, and a local demo.
-              </p>
-              <div class="metric-row">
-                <div><strong>0.79</strong><span>Macro F1</span></div>
-                <div><strong>~82%</strong><span>Accuracy</span></div>
-              </div>
-              <div class="project-tags"><span>Python</span><span>ML</span><span>Streamlit</span><span>MLflow</span><span>Docker</span></div>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-index">02</div>
-            <div class="project-visual visual-time">
-              <i class="fa-solid fa-chart-line"></i>
-              <span>TIME SERIES</span>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">2025 · 2-PERSON GROUP</div>
-              <h3>Road Accident Forecasting</h3>
-              <p class="project-subtitle">Daily Forecasting Using LSTM</p>
-              <p>
-                Built a time-series pipeline for daily road accident data from 2019–2021,
-                including preprocessing, feature engineering, sequence generation,
-                LSTM training, and evaluation.
-              </p>
-              <div class="metric-row">
-                <div><strong>~0.68</strong><span>R²</span></div>
-                <div><strong>5-day</strong><span>Forecast</span></div>
-              </div>
-              <div class="project-tags"><span>Python</span><span>LSTM</span><span>Time Series</span></div>
+            <div class="project-tags"><span>Python</span><span>Machine Learning</span><span>Streamlit</span><span>MLflow</span><span>Docker</span></div>
+            <div class="project-links">
+              <a href="#" class="disabled-link" title="Add your GitHub project URL"><i class="fa-brands fa-github"></i> Add GitHub URL</a>
+              <span class="project-status"><i class="fa-solid fa-location-dot"></i> Local Demo</span>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-index">03</div>
-            <div class="project-visual visual-nlp">
-              <i class="fa-solid fa-message"></i>
-              <span>NLP</span>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">2024 · INDIVIDUAL PROJECT</div>
-              <h3>SMS Spam Classifier</h3>
-              <p class="project-subtitle">Classification Using LSTM</p>
-              <p>
-                Built an end-to-end pipeline for 5,572 English, Thai, and mixed Thai-English
-                SMS messages, from preprocessing and custom spam-token handling to LSTM
-                training, evaluation, and Gradio inference.
-              </p>
-              <div class="metric-row">
-                <div><strong>98.57%</strong><span>Accuracy</span></div>
-                <div><strong>0.94</strong><span>Spam F1</span></div>
-              </div>
-              <div class="project-tags"><span>Python</span><span>NLP</span><span>LSTM</span><span>Gradio</span></div>
-            </div>
+          <article class="project-card reveal delay-1">
+            <div class="project-number">02</div>
+            <div class="project-icon"><i class="fa-solid fa-road"></i></div>
+            <div class="project-meta">2-Person Group · 2025</div>
+            <h3>Road Accident Forecasting</h3>
+            <p>
+              Time-series forecasting pipeline for daily road accident data from 2019–2021,
+              using preprocessing, feature engineering, sequence generation and LSTM training.
+            </p>
+            <div class="metric-row compact"><div><strong>~0.68</strong><span>R²</span></div><div><strong>5-day</strong><span>Forecast</span></div></div>
+            <div class="project-tags"><span>Python</span><span>LSTM</span><span>Time Series</span></div>
+            <div class="project-links"><a href="#" class="disabled-link" title="Add your GitHub project URL"><i class="fa-brands fa-github"></i> Add GitHub URL</a></div>
           </article>
 
           <article class="project-card reveal">
-            <div class="project-index">04</div>
-            <div class="project-visual visual-cv">
-              <i class="fa-solid fa-face-smile"></i>
-              <span>COMPUTER VISION</span>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">2024 · 2-PERSON GROUP</div>
-              <h3>Face Shape Classification</h3>
-              <p class="project-subtitle">Vision Transformer</p>
-              <p>
-                Handled the ViT workflow, data preparation and augmentation,
-                MediaPipe face processing, Gradio interface, and model evaluation
-                for four-class face-shape classification.
-              </p>
-              <div class="metric-row">
-                <div><strong>96.20%</strong><span>Accuracy</span></div>
-                <div><strong>0.9616</strong><span>Macro F1</span></div>
-              </div>
-              <div class="project-tags"><span>Python</span><span>ViT</span><span>MediaPipe</span><span>Gradio</span></div>
-            </div>
+            <div class="project-number">03</div>
+            <div class="project-icon"><i class="fa-solid fa-message"></i></div>
+            <div class="project-meta">Individual · 2024 · Introduction to NLP</div>
+            <h3>SMS Spam Classifier</h3>
+            <p>
+              End-to-end bilingual and mixed-language SMS classification with custom spam-token
+              handling, a two-layer LSTM and an interactive Gradio interface.
+            </p>
+            <div class="metric-row compact"><div><strong>98.21%</strong><span>Accuracy</span></div><div><strong>0.93</strong><span>Spam F1</span></div></div>
+            <div class="project-tags"><span>Python</span><span>NLP</span><span>LSTM</span><span>Gradio</span></div>
+            <div class="project-links"><a href="#" class="disabled-link" title="Add your GitHub project URL"><i class="fa-brands fa-github"></i> Add GitHub URL</a></div>
+          </article>
+
+          <article class="project-card reveal delay-1">
+            <div class="project-number">04</div>
+            <div class="project-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="project-meta">2-Person Group · 2025</div>
+            <h3>Face Shape Classification</h3>
+            <p>
+              Four-class face-shape classification using a fine-tuned Vision Transformer.
+              My work included data preparation and augmentation, MediaPipe processing,
+              Gradio, and model evaluation.
+            </p>
+            <div class="metric-row compact"><div><strong>96.20%</strong><span>Accuracy</span></div><div><strong>0.9616</strong><span>Macro F1</span></div></div>
+            <div class="project-tags"><span>ViT</span><span>MediaPipe</span><span>Gradio</span></div>
+            <div class="project-links"><a href="#" class="disabled-link" title="Add your GitHub project URL"><i class="fa-brands fa-github"></i> Add GitHub URL</a></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section education" id="education">
-      <div class="container two-col">
-        <div class="section-heading reveal">
-          <span class="section-number">04</span>
-          <p class="section-tag">EDUCATION</p>
-          <h2>Learning the<br><span>foundations.</span></h2>
+    <!-- ACTIVITIES -->
+    <section class="section section-dark" id="activities">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <span class="section-kicker">05 · ACTIVITIES & ACHIEVEMENTS</span>
+          <h2>Beyond <span>projects</span>.</h2>
         </div>
 
-        <div class="timeline reveal">
-          <div class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div>
-              <p class="timeline-date">2023 — EXPECTED APR 2027</p>
-              <h3>King Mongkut's Institute of Technology Ladkrabang</h3>
-              <p>Bachelor of Science · Artificial Intelligence Technology</p>
-              <p class="muted">
-                Relevant coursework: Probabilistic Machine Learning, Fundamentals of Deep Learning,
-                Introduction to Computer Vision, Introduction to NLP, Machine Learning Operations,
-                Building LLM-Powered Applications.
-              </p>
+        <div class="activity-grid">
+          <article class="activity-card reveal">
+            <div class="activity-icon"><i class="fa-solid fa-people-group"></i></div>
+            <div><span class="activity-date">2025</span><h3>Guard Staff</h3><p>IT Camp 21 & UNITE 7 — supported participant safety and overnight supervision during 3-day, 2-night student activities.</p></div>
+          </article>
+
+          <article class="activity-card reveal delay-1">
+            <div class="activity-icon"><i class="fa-solid fa-star"></i></div>
+            <div><span class="activity-date">2023–2024</span><h3>IT Katakorn — KMITL</h3><p>Represented the School of Information Technology at IT3K 18th and KHEASAD 2024.</p><strong>4th Place · KHEASAD 2024 Baton Competition</strong></div>
+          </article>
+        </div>
+
+        <div class="education-strip reveal">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div><span>EDUCATION</span><strong>B.Sc. Artificial Intelligence Technology · KMITL</strong><small>2023 – Expected Apr 2027</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-copy reveal">
+            <span class="section-kicker">06 · CONTACT</span>
+            <h2>Let's build something <span>useful</span>.</h2>
+            <p>
+              I'm currently looking for an AI/ML Engineer internship or co-op opportunity.
+              If you'd like to discuss a project, internship opportunity or collaboration,
+              feel free to reach out.
+            </p>
+
+            <div class="contact-list">
+              <a href="mailto:yupapornsaksrirungroj@gmail.com"><i class="fa-regular fa-envelope"></i><span><small>Email</small>yupapornsaksrirungroj@gmail.com</span></a>
+              <a href="https://www.linkedin.com/in/yupaporn-saksrirungroj/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span><small>LinkedIn</small>linkedin.com/in/yupaporn-saksrirungroj</span></a>
+              <div><i class="fa-solid fa-location-dot"></i><span><small>Location</small>Bangkok, Thailand</span></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section contact" id="contact">
-      <div class="container contact-box reveal">
-        <div>
-          <span class="section-number">05</span>
-          <p class="section-tag">GET IN TOUCH</p>
-          <h2>Let's build something<br><span>useful with AI.</span></h2>
-          <p>
-            I'm looking for an AI/ML Engineer internship / co-op opportunity
-            where I can contribute to real-world AI applications and deepen my applied ML skills.
-          </p>
-        </div>
-
-        <div class="contact-links">
-          <a href="mailto:yupapornsaksrirungroj@gmail.com">
-            <span><i class="fa-regular fa-envelope"></i> Email</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/yupaporn-saksrirungroj" target="_blank" rel="noreferrer">
-            <span><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="tel:+66924213255">
-            <span><i class="fa-solid fa-phone"></i> +66 92 421 3255</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+          <div class="contact-card reveal delay-1">
+            <div class="contact-card-top">
+              <span>CO-OP AVAILABILITY</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+            <strong>30 Nov 2026</strong>
+            <p>Available for a minimum 16-week co-op placement.</p>
+            <a href="mailto:yupapornsaksrirungroj@gmail.com?subject=AI%2FML%20Internship%20Opportunity" class="btn btn-primary full">Email Me <i class="fa-regular fa-paper-plane"></i></a>
+            <a href="resume.pdf" class="btn btn-secondary full" target="_blank" rel="noopener">View Resume <i class="fa-regular fa-file-pdf"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -360,8 +351,8 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© 2026 Yupaporn Saksrirungroj</span>
-      <span>Designed & built for AI/ML Engineering</span>
+      <span>© <span id="year"></span> Yupaporn Saksrirungroj</span>
+      <span>AI/ML Engineer Intern · KMITL</span>
     </div>
   </footer>
 
