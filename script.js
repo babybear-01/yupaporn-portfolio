@@ -1,102 +1,55 @@
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => document.querySelectorAll(s);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+window.addEventListener("load",()=>setTimeout(()=>$("#preloader").classList.add("hide"),450));
+document.addEventListener("DOMContentLoaded",()=>{
+$("#year").textContent=new Date().getFullYear();
+const header=$("#header");addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>30),{passive:true});
+$("#menuBtn").onclick=()=>$(".nav").classList.toggle("open");
+$$("#nav a").forEach(a=>a.onclick=()=>$(".nav").classList.remove("open"));
 
-window.addEventListener("load", () => {
-  setTimeout(() => $("#preloader")?.classList.add("hide"), 500);
+const revealObserver=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");revealObserver.unobserve(e.target)}}),{threshold:.1});
+$$(".reveal").forEach(e=>revealObserver.observe(e));
+
+const links=$$("#nav a"),ind=$(".indicator");
+function moveIndicator(a){if(innerWidth<=900||!a)return;ind.style.width=a.offsetWidth+"px";ind.style.height=a.offsetHeight+"px";ind.style.transform=`translate(${a.offsetLeft}px,${a.offsetTop}px)`}
+setTimeout(()=>moveIndicator($(".nav a.active")),300);
+const sections=$$("main section[id]");
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const a=$(`#nav a[href="#${e.target.id}"]`);if(a){links.forEach(x=>x.classList.remove("active"));a.classList.add("active");moveIndicator(a)}}}),{rootMargin:"-40% 0px -45% 0px"});
+sections.forEach(s=>spy.observe(s));addEventListener("resize",()=>moveIndicator($(".nav a.active")));
+
+const cards=$$(".project-card");
+cards.forEach(card=>card.addEventListener("click",()=>{
+ cards.forEach(c=>c.classList.remove("active"));
+ card.classList.add("active");
+}));
+let startX=0;
+const accordion=$("#projectAccordion");
+accordion.addEventListener("pointerdown",e=>{startX=e.clientX});
+accordion.addEventListener("pointerup",e=>{
+ const dx=e.clientX-startX;
+ if(Math.abs(dx)<50)return;
+ const active=cards.findIndex(c=>c.classList.contains("active"));
+ const next=dx<0?Math.min(active+1,cards.length-1):Math.max(active-1,0);
+ cards.forEach(c=>c.classList.remove("active"));cards[next].classList.add("active");
+ cards[next].scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
 });
 
-const phrases = [
-  "AI/ML Engineer Intern",
-  "Machine Learning",
-  "NLP & Computer Vision",
-  "AI Application Builder"
-];
-
-let phraseIndex = 0, charIndex = 0, deleting = false;
-const typewriter = $("#typewriter");
-
-function typeLoop(){
-  if(!typewriter) return;
-  const phrase = phrases[phraseIndex];
-  typewriter.textContent = deleting ? phrase.slice(0, charIndex--) : phrase.slice(0, charIndex++);
-  let speed = deleting ? 45 : 75;
-
-  if(!deleting && charIndex > phrase.length){
-    deleting = true; speed = 1500;
-  } else if(deleting && charIndex < 0){
-    deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; charIndex = 0; speed = 350;
-  }
-  setTimeout(typeLoop, speed);
+const canvas=$("#particles"),ctx=canvas.getContext("2d");let p=[];
+function resize(){
+ canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;
+ ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+ p=Array.from({length:innerWidth<700?35:90},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,r:Math.random()+.2}));
 }
-typeLoop();
+function draw(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ p.forEach(a=>{a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>innerWidth)a.vx*=-1;if(a.y<0||a.y>innerHeight)a.vy*=-1;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle="rgba(170,180,205,.22)";ctx.fill()});
+ requestAnimationFrame(draw);
+}
+resize();addEventListener("resize",resize);draw();
 
-const navbar = $("#navbar");
-window.addEventListener("scroll", () => {
-  navbar?.classList.toggle("scrolled", window.scrollY > 30);
+const visual=$(".visual");
+addEventListener("mousemove",e=>{
+ if(innerWidth<=900||!visual)return;
+ const x=(e.clientX/innerWidth-.5)*-10,y=(e.clientY/innerHeight-.5)*-7;
+ visual.style.transform=`translate(${x}px,${y-48}%)`;
 });
-
-const menuToggle = $("#menuToggle");
-const navMenu = $("#navMenu");
-menuToggle?.addEventListener("click", () => navMenu?.classList.toggle("open"));
-$$(".nav-link, .nav-connect").forEach(link => {
-  link.addEventListener("click", () => navMenu?.classList.remove("open"));
 });
-
-const sections = $$("main section[id]");
-const navLinks = $$(".nav-link");
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
-    }
-  });
-}, {rootMargin:"-40% 0px -50% 0px"});
-sections.forEach(section => sectionObserver.observe(section));
-
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-      observer.unobserve(entry.target);
-    }
-  });
-}, {threshold:.12});
-$$(".reveal").forEach(el => revealObserver.observe(el));
-
-$("#year").textContent = new Date().getFullYear();
-
-/* Lightweight animated background — no external JS library required. */
-const canvas = $("#particles");
-const ctx = canvas?.getContext("2d");
-let particles = [];
-
-function resizeCanvas(){
-  if(!canvas) return;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  particles = Array.from({length: Math.min(70, Math.floor(window.innerWidth/18))}, () => ({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*1.5 + .3,
-    vx: (Math.random()-.5)*.22,
-    vy: (Math.random()-.5)*.22
-  }));
-}
-function drawParticles(){
-  if(!ctx) return;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "rgba(150,145,255,.55)";
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if(p.x<0||p.x>canvas.width)p.vx*=-1;
-    if(p.y<0||p.y>canvas.height)p.vy*=-1;
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-  });
-  requestAnimationFrame(drawParticles);
-}
-resizeCanvas();
-drawParticles();
-window.addEventListener("resize", resizeCanvas);
-
-/* Prevent placeholder project links from jumping to the top. */
-$$(".disabled-link").forEach(a => a.addEventListener("click", e => e.preventDefault()));
